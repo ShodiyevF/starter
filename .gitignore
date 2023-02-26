@@ -1,6 +1,3 @@
-# sqlite database
-*.sqlite
-
 # ssl keys direction
 .well-known
 
