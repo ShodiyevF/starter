@@ -1,12 +1,13 @@
-const { config } = require('dotenv');
-config({ path: `.env.${process.env.NODE_ENV || 'development'}.local` });
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV || 'development'}.local` })
 
-const { setMockdata } = require('./config/database');
-const { CORS_OPTIONS } = require('./config/cors');
+const { errorMiddleware } = require('./middleware/error.widdleware.js');
+const setMockdata = require('./config/database.js');
+const { stream } = require('./config/logger.js');
+const CORS_OPTIONS = require('./config/cors.js');
 const express = require('express');
+const morgan = require('morgan');
 const cors = require('cors');
-const path = require('path');
-const fs = require('fs');
+
 
 async function app(routes) {
     const app = express();
@@ -23,14 +24,16 @@ async function app(routes) {
     }
 
     function initializeMiddlewares() {
+        app.use(morgan(process.env.LOG_FORMAT, { stream }));
         app.use(cors(CORS_OPTIONS));
         app.use(express.json());
         app.use(express.urlencoded({ extended: true }));
+        app.use(errorMiddleware);
     }
 
     function initializeRoutes(routes) {
         routes.forEach(route => {
-            app.use('/', route.router);
+            app.use(route);
         });
     }
 

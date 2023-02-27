@@ -14,6 +14,4 @@ const CORS_OPTIONS = {
     optionsSuccessStatus: 200,
 };
 
-module.exports = {
-    CORS_OPTIONS,
-};
+module.exports = CORS_OPTIONS

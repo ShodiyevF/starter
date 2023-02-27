@@ -1,4 +1,4 @@
-const { uniqRow } = require('../lib/pg');
+const { uniqRow } = require('../lib/pg.js');
 
 async function setMockdata() {
     const datas = await uniqRow('select * from users;');
@@ -13,6 +13,4 @@ async function setMockdata() {
     }
 }
 
-module.exports = {
-    setMockdata,
-};
+module.exports = setMockdata
