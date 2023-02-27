@@ -1,9 +1,7 @@
 const getUserDto = {
-    username: [
-        'expose'
-    ]
-}
+    username: ['expose'],
+};
 
 module.exports = {
-    getUserDto
-}
+    getUserDto,
+};

@@ -15,5 +15,5 @@ const CORS_OPTIONS = {
 };
 
 module.exports = {
-    CORS_OPTIONS
-}
+    CORS_OPTIONS,
+};

@@ -1,8 +1,1 @@
-const dtoFormat = [
-    'expose',
-    'isString',
-    'minLength',
-    'maxLength',
-    'boolean',
-    'notEqual'
-]
+const dtoFormat = ['expose', 'isString', 'minLength', 'maxLength', 'boolean', 'notEqual'];
