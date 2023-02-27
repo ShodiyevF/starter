@@ -1,3 +1,7 @@
+const { config } = require('dotenv');
+config({ path: `.env.${process.env.NODE_ENV || 'development'}.local` });
+
+const { setMockdata } = require('./config/database');
 const { CORS_OPTIONS } = require('./config/cors');
 const express = require('express');
 const cors = require('cors');
@@ -18,10 +22,10 @@ async function app(routes) {
         });
     }
 
-    function initializeMiddlewares(){
-        app.use(cors(CORS_OPTIONS))
-        app.use(express.json())
-        app.use(express.urlencoded({ extended: true }))
+    function initializeMiddlewares() {
+        app.use(cors(CORS_OPTIONS));
+        app.use(express.json());
+        app.use(express.urlencoded({ extended: true }));
     }
 
     function initializeRoutes(routes) {
@@ -29,14 +33,15 @@ async function app(routes) {
             app.use('/', route.router);
         });
     }
-    
+
     async function runner() {
-        await initializeMiddlewares()
-        await initializeRoutes(routes)
-        await lister()
+        await setMockdata();
+        await initializeMiddlewares();
+        await initializeRoutes(routes);
+        await lister();
     }
 
-    runner()
+    runner();
 }
 
-module.exports = app
+module.exports = app;
