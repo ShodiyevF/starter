@@ -25,9 +25,9 @@ async function app(routes) {
     }
 
     function initializeRoutes(routes) {
-        // routes.forEach(route => {
-        //     app.use('/', route.router);
-        // });
+        routes.forEach(route => {
+            app.use('/', route.router);
+        });
     }
     
     async function runner() {
