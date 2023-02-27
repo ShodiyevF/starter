@@ -1,4 +1,4 @@
-require('dotenv').config({ path: `.env.${process.env.NODE_ENV || 'development'}.local` })
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV || 'development'}.local` });
 
 const { errorMiddleware } = require('./middleware/error.widdleware.js');
 const setMockdata = require('./config/database.js');
@@ -7,7 +7,6 @@ const CORS_OPTIONS = require('./config/cors.js');
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-
 
 async function app(routes) {
     const app = express();

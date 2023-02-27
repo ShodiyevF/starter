@@ -13,4 +13,4 @@ async function setMockdata() {
     }
 }
 
-module.exports = setMockdata
+module.exports = setMockdata;

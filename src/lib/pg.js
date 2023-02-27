@@ -1,4 +1,4 @@
-require('dotenv').config({ path: `.env.${process.env.NODE_ENV || 'development'}.local` })
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV || 'development'}.local` });
 
 const pg = require('pg');
 
@@ -20,5 +20,5 @@ const uniqRow = async (query, ...arr) => {
 };
 
 module.exports = {
-    uniqRow
+    uniqRow,
 };
