@@ -9,8 +9,6 @@ async function app(routes) {
     const port = process.env.PORT || 3000;
     const action = process.env.NODE_ENV || 'development';
 
-    console.log(action);
-
     function lister() {
         app.listen(port, () => {
             console.info('=================================');
@@ -27,9 +25,9 @@ async function app(routes) {
     }
 
     function initializeRoutes(routes) {
-        routes.forEach(route => {
-            app.use('/', route.router);
-        });
+        // routes.forEach(route => {
+        //     app.use('/', route.router);
+        // });
     }
     
     async function runner() {
